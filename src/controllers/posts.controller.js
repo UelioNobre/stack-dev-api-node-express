@@ -8,6 +8,14 @@ async function create(req, res) {
     .json({ post: createdPost.message });
 }
 
+async function read(req, res) {
+  const { id } = req.params;
+  const readPostByID = await postsService.readPostByID({ id });
+  return res
+    .status(readPostByID.statusCode)
+    .json({ post: readPostByID.message });
+}
+
 async function list(req, res) {
   const posts = await postsService.listPosts();
 
@@ -18,5 +26,6 @@ async function list(req, res) {
 
 module.exports = {
   create,
+  read,
   list,
 };

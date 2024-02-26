@@ -16,4 +16,16 @@ async function listPosts() {
   };
 }
 
-module.exports = { createNewPost, listPosts, };
+async function readPostByID({ id }) {
+  const post = await postModel.findById({ id });
+  return {
+    statusCode: 200,
+    message: post,
+  };
+}
+
+module.exports = {
+  createNewPost,
+  listPosts,
+  readPostByID,
+};

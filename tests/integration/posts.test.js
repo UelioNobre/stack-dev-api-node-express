@@ -34,9 +34,23 @@ describe('Posts', () => {
       expect(body.posts[0].id).to.be.not.undefined
       expect(body.posts[0].title).to.be.equal(mock.postMock.title)
       expect(body.posts[0].text).to.be.equal(mock.postMock.text)
+    })
 
-      console.log(body)
+    it('Deve listar um post pelo id', async () => {
+      const request = await chai.request(app).get('/posts')
+      const { body: { posts } } = request
 
+      const { id } = posts[0]
+      const requestByID = await chai.request(app).get(`/posts/${id}`)
+      const { statusCode, body } = requestByID
+
+      expect(statusCode).to.be.equal(200)
+      expect(body).to.have.property('post')
+
+      expect(body.post).to.have.keys('id', 'title', 'text')
+      expect(body.post.id).to.be.not.undefined
+      expect(body.post.title).to.be.equal(mock.postMock.title)
+      expect(body.post.text).to.be.equal(mock.postMock.text)
     })
   })
 })

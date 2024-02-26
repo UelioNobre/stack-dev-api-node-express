@@ -9,9 +9,15 @@ async function list() {
   return Promise.resolve(posts);
 }
 
+async function findById({ id }) {
+  const post = posts.find((p) => p.id === +id)
+  return Promise.resolve(post);
+}
+
 
 
 module.exports = {
   create,
   list,
+  findById
 };
