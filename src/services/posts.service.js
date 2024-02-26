@@ -8,4 +8,12 @@ async function createNewPost({ title, text }) {
   };
 }
 
-module.exports = { createNewPost };
+async function listPosts() {
+  const posts = await postModel.list();
+  return {
+    statusCode: 200,
+    message: posts,
+  };
+}
+
+module.exports = { createNewPost, listPosts, };
