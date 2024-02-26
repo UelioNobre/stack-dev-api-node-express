@@ -24,8 +24,18 @@ async function list(req, res) {
     .json({ posts: posts.message });
 }
 
+async function destroy(req, res) {
+  const { params: id } = req
+  const { statusCode, message } = await postsService.destroyPostByID(id);
+
+  return res
+    .status(statusCode)
+    .json(message);
+}
+
 module.exports = {
   create,
   read,
   list,
+  destroy,
 };

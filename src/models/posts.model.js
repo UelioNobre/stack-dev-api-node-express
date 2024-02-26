@@ -14,10 +14,16 @@ async function findById({ id }) {
   return Promise.resolve(post);
 }
 
+async function deleteById({ id }) {
+  const post = posts.find((p) => p.id === +id)
+  posts.splice(post, 1)
+  return Promise.resolve({})
+}
 
 
 module.exports = {
   create,
   list,
-  findById
+  findById,
+  deleteById
 };

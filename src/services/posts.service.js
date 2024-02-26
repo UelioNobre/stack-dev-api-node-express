@@ -23,9 +23,17 @@ async function readPostByID({ id }) {
     message: post,
   };
 }
+async function destroyPostByID({ id }) {
+  await postModel.deleteById({ id });
+  return {
+    statusCode: 204,
+    message: {},
+  };
+}
 
 module.exports = {
   createNewPost,
   listPosts,
   readPostByID,
+  destroyPostByID,
 };

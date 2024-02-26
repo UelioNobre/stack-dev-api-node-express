@@ -52,5 +52,17 @@ describe('Posts', () => {
       expect(body.post.title).to.be.equal(mock.postMock.title)
       expect(body.post.text).to.be.equal(mock.postMock.text)
     })
+
+    it('Deve deletar um post pelo id', async () => {
+      const request = await chai.request(app).get('/posts')
+      const { body: { posts } } = request
+
+      const { id } = posts[0]
+      const requestByID = await chai.request(app).delete(`/posts/${id}`)
+      const { statusCode, body } = requestByID
+
+      expect(statusCode).to.be.equal(204)
+      expect(Object.keys(body)).to.have.lengthOf(0)
+    })
   })
 })
