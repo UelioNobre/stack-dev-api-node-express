@@ -20,10 +20,19 @@ async function deleteById({ id }) {
   return Promise.resolve({})
 }
 
+async function updateById(id, { title, text }) {
+  await deleteById(id)
+  const newPost = { id, title, text };
+  posts.push(newPost)
+
+  return Promise.resolve(newPost)
+}
+
 
 module.exports = {
   create,
   list,
   findById,
-  deleteById
+  deleteById,
+  updateById
 };

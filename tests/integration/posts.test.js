@@ -53,6 +53,24 @@ describe('Posts', () => {
       expect(body.post.text).to.be.equal(mock.postMock.text)
     })
 
+    it('Deve alterar um post pelo id', async () => {
+      const request = await chai.request(app).get('/posts')
+      const { body: { posts } } = request
+
+      const { id } = posts[0]
+      const newData = { title: 'Iitulo atualizado do post', text: 'Texto atualizado do post' }
+      const requestByID = await chai.request(app).put(`/posts/${id}`).send(newData)
+      const { statusCode, body } = requestByID
+
+      expect(statusCode).to.be.equal(200)
+      expect(body).to.have.property('post')
+
+      expect(body.post).to.have.keys('id', 'title', 'text')
+      expect(body.post.id).to.be.equal(id)
+      expect(body.post.title).to.be.equal(newData.title)
+      expect(body.post.text).to.be.equal(newData.text)
+    })
+
     it('Deve deletar um post pelo id', async () => {
       const request = await chai.request(app).get('/posts')
       const { body: { posts } } = request

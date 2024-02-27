@@ -31,9 +31,18 @@ async function destroyPostByID({ id }) {
   };
 }
 
+async function updatePostByID(id, { title, text }) {
+  const post = await postModel.updateById(id, { title, text })
+  return {
+    statusCode: 200,
+    message: { post },
+  };
+}
+
 module.exports = {
   createNewPost,
   listPosts,
   readPostByID,
   destroyPostByID,
+  updatePostByID,
 };

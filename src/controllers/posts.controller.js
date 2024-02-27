@@ -33,9 +33,20 @@ async function destroy(req, res) {
     .json(message);
 }
 
+async function update(req, res) {
+  const { id } = req.params
+  const { title, text } = req.body
+  const { statusCode, message } = await postsService.updatePostByID(+id, { title, text });
+
+  return res
+    .status(statusCode)
+    .json(message);
+}
+
 module.exports = {
   create,
   read,
   list,
   destroy,
+  update
 };
