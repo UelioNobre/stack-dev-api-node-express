@@ -11,7 +11,8 @@
     "test:unit": "jest tests/unit",
     "test:coverage": "jest --coverage",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "db:seed": "npx sequelize-cli db:seed:all"
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all; npm run db:migrate; npm run db:seed"
   },
   "keywords": [
     "api",
