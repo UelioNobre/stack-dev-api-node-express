@@ -12,7 +12,7 @@ describe('Testa PostsService', () => {
 
   it('Será validado que é possível cadastrar um novo post', async () => {
     sinon.stub(postsModel, 'create').resolves(mock.postMockWithId)
-    const post = await postsServices.createNewPost({ title: 'post title', text: 'post text' })
+    const post = await postsServices.createPost({ title: 'post title', text: 'post text' })
     expect(post).to.be.deep.equal(mock.postCreatedMockExpected)
   });
 });
