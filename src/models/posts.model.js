@@ -1,8 +1,11 @@
-const posts = [];
+// const posts = [];
+const { posts } = require('../database/models')
 
 async function create({ title, text }) {
-  posts.push({ id: Date.now(), title, text });
-  return Promise.resolve({ id: Date.now(), title, text });
+  // posts.push({ id: Date.now(), title, text });
+  // return Promise.resolve({ id: Date.now(), title, text });
+  const post = await posts.create({ title, text })
+  return post
 }
 
 async function read({ id }) {
