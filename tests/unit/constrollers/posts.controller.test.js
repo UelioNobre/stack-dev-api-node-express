@@ -16,7 +16,7 @@ describe('Testa PostsController', () => {
 
   it('Será validado que é possível criar um novo post', async () => {
 
-    sinon.stub(postsService, 'createNewPost').resolves(mock.postCreatedMockExpected);
+    sinon.stub(postsService, 'createPost').resolves(mock.postCreatedMockExpected);
 
     const req = { body: mock.postMock };
     const res = {};
