@@ -8,20 +8,8 @@ const development = {
   dialect: process.env.MYSQL_DIALECT,
 };
 
-const test = {
-  username: "root",
-  password: null,
-  database: "database_development",
-  host: "127.0.0.1",
-  dialect: "mysql"
-};
+const test = { ...development };
 
-const production = {
-  username: "root",
-  password: null,
-  database: "database_development",
-  host: "127.0.0.1",
-  dialect: "mysql"
-};
+const production = { ...development };
 
 module.exports = { development, test, production };
