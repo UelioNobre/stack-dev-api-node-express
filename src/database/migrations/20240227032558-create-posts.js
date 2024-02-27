@@ -15,13 +15,13 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      updated_at: {
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       }
     });
   },
