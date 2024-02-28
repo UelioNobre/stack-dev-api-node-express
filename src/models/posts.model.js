@@ -1,31 +1,32 @@
-const posts = [];
+// const posts = [];
+const { posts } = require('../database/models')
 
 async function create({ title, text }) {
-  posts.push({ id: Date.now(), title, text });
-  return Promise.resolve({ id: Date.now(), title, text });
+  // posts.push({ id: Date.now(), title, text });
+  // return Promise.resolve({ id: Date.now(), title, text });
+  console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+  const post = await posts.create({ title, text })
+  console.log(post)
+  return post
 }
 
 async function read({ id }) {
-  const post = posts.find((p) => p.id === +id)
+  const post = await posts.findByPk(id)
   return Promise.resolve(post);
 }
 
 async function update(id, { title, text }) {
-  await destroy(id)
-  const newPost = { id, title, text };
-  posts.push(newPost)
-
-  return Promise.resolve(newPost)
+  const post = await posts.update({ title, text }, { where: { id } })
+  return { id, title, text }
 }
 
 async function destroy({ id }) {
-  const post = posts.find((p) => p.id === +id)
-  posts.splice(post, 1)
-  return Promise.resolve({})
+  const post = await posts.destroy({ where: { id } })
+  return post
 }
 
 async function list() {
-  return Promise.resolve(posts);
+  return await posts.findAll();
 }
 
 
