@@ -4,9 +4,8 @@ const { posts } = require('../database/models')
 async function create({ title, text }) {
   // posts.push({ id: Date.now(), title, text });
   // return Promise.resolve({ id: Date.now(), title, text });
-  console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
   const post = await posts.create({ title, text })
-  return post
+  return post.dataValues;
 }
 
 async function read({ id }) {

@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "jest --verbose",
-    "test:integration": "jest tests/integration --watchAll",
+    "test": "npm run test:unit -- --silent=true; npm run test:integration -- --silent=true",
+    "test:integration": "jest tests/integration",
     "test:unit": "jest tests/unit",
     "test:coverage": "jest --coverage",
     "db:migrate": "npx sequelize-cli db:migrate",
