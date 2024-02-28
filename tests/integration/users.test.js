@@ -42,21 +42,6 @@ describe('Users', () => {
       expect(body.user.email).to.be.equal(mock.userMock.email)
     })
 
-    // it.skip('Deve listar posts com sucesso', async () => {
-    //   await chai.request(app).post('/posts').send(mock.postMock)
-    //   const request = await chai.request(app).get('/posts')
-    //   const { statusCode, body } = request
-
-    //   expect(statusCode).to.be.equal(200)
-    //   expect(body).to.have.property('posts')
-
-    //   expect(body.posts).to.have.lengthOf(2)
-    //   expect(body.posts[0]).to.have.keys('id', 'title', 'text')
-    //   expect(body.posts[0].id).to.be.not.undefined
-    //   expect(body.posts[0].title).to.be.equal(mock.postMock.title)
-    //   expect(body.posts[0].text).to.be.equal(mock.postMock.text)
-    // })
-
     it('Deve alterar o nome um usuário pelo seu id', async () => {
       const expectedId = 1
       const expectedData = { name: 'User Test' }
