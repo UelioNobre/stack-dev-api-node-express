@@ -46,8 +46,19 @@ async function update(id, { name }) {
   }
 }
 
+async function destroy(id) {
+  try {
+    await users.destroy({ where: { id } });
+    return true;
+  } catch (error) {
+    console.error(error)
+    throw new Error(error.message)
+  }
+}
+
 module.exports = {
   create,
   read,
-  update
+  update,
+  destroy
 }

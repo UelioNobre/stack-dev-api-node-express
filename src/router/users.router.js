@@ -9,5 +9,6 @@ const router = Router();
 router.post('/', usersController.create);
 router.get('/:id', usersController.read);
 router.put('/:id', usersController.update);
+router.delete('/:id', usersController.destroy);
 
 module.exports = router;

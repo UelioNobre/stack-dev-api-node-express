@@ -28,8 +28,18 @@ async function update(req, res) {
     .json({ user: message })
 }
 
+async function destroy(req, res) {
+  const { id } = req.params
+  const { statusCode } = await userService.deleteUser(+id)
+
+  return res
+    .status(statusCode)
+    .json({})
+}
+
 module.exports = {
   create,
   read,
   update,
+  destroy
 }

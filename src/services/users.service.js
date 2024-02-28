@@ -45,8 +45,23 @@ async function updateUser(id, { name }) {
   }
 }
 
+async function deleteUser(id) {
+  try {
+    await usersModel.destroy(id);
+    return {
+      statusCode: 204,
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      message: error.message
+    }
+  }
+}
+
 module.exports = {
   createUser,
   readUser,
   updateUser,
+  deleteUser
 }
