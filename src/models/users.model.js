@@ -35,7 +35,19 @@ async function read({ id }) {
   }
 }
 
+async function update(id, { name }) {
+  try {
+    const updated_at = Date.now()
+    await users.update({ name, updated_at }, { where: { id } });
+    return { id, name };
+  } catch (error) {
+    console.error(error)
+    throw new Error(error.message)
+  }
+}
+
 module.exports = {
   create,
   read,
+  update
 }

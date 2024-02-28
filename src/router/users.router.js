@@ -6,7 +6,8 @@ const PORT = process.env.API_PORT;
 
 const router = Router();
 
-router.get('/:id', usersController.read);
 router.post('/', usersController.create);
+router.get('/:id', usersController.read);
+router.put('/:id', usersController.update);
 
 module.exports = router;

@@ -30,7 +30,23 @@ async function readUser({ id }) {
   }
 }
 
+async function updateUser(id, { name }) {
+  try {
+    const user = await usersModel.update(id, { name });
+    return {
+      statusCode: 200,
+      message: user
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      message: error.message
+    }
+  }
+}
+
 module.exports = {
   createUser,
   readUser,
+  updateUser,
 }

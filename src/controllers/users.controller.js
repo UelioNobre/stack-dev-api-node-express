@@ -18,7 +18,18 @@ async function read(req, res) {
     .json({ user: message })
 }
 
+async function update(req, res) {
+  const { id } = req.params
+  const { name } = req.body
+  const { statusCode, message } = await userService.updateUser(+id, { name })
+
+  return res
+    .status(statusCode)
+    .json({ user: message })
+}
+
 module.exports = {
   create,
   read,
+  update,
 }
