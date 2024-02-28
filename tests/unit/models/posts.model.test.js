@@ -4,7 +4,7 @@ const { posts } = require('../../../src/database/models')
 const postsModel = require('../../../src/models/posts.model')
 const mock = require('../../mocks');
 
-afterAll(async () => {
+beforeAll(async () => {
   await posts.destroy({
     truncate: true
   });

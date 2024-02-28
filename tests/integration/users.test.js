@@ -8,7 +8,7 @@ chai.use(chaiHttp)
 const { users } = require('../../src/database/models')
 const mock = require('../mocks');
 
-afterAll(async () => {
+beforeAll(async () => {
   await users.destroy({
     truncate: true
   });
@@ -58,6 +58,9 @@ describe('Users', () => {
       const { statusCode } = request
 
       expect(statusCode).to.be.equal(204)
+      await users.destroy({
+        truncate: true
+      });
     })
   })
 })

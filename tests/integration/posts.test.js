@@ -9,7 +9,7 @@ chai.use(chaiHttp)
 
 const mock = require('../mocks');
 
-afterAll(async () => {
+beforeAll(async () => {
   await posts.destroy({
     truncate: true
   });
@@ -77,6 +77,10 @@ describe('Posts', () => {
 
       expect(statusCode).to.be.equal(204)
       expect(Object.keys(body)).to.have.lengthOf(0)
+
+      await posts.destroy({
+        truncate: true
+      });
     })
   })
 })
