@@ -56,9 +56,23 @@ async function destroy(id) {
   }
 }
 
+async function findByEmail(email) {
+  const user = await users.findOne({
+    where: { email },
+    attributes: ['id', 'name', 'email', 'password'],
+  });
+
+  if (!user) {
+    throw new Error('User not found', { cause: { statusCode: 404 } })
+  }
+
+  return user.dataValues
+}
+
 module.exports = {
   create,
   read,
   update,
-  destroy
+  destroy,
+  findByEmail
 }
