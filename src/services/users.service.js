@@ -59,9 +59,17 @@ async function deleteUser(id) {
   }
 }
 
+async function findByEmail(email) {
+  const user = await usersModel.findByEmail(email);
+  if (!user)
+    throw new Error('User not found', { cause: { statusCode: 404 } })
+  return { statusCode: 200, message: user };
+}
+
 module.exports = {
   createUser,
   readUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  findByEmail
 }
