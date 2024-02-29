@@ -1,5 +1,5 @@
 // const posts = [];
-const { posts } = require('../database/models')
+const { posts } = require('../database/schemas')
 
 async function create({ title, text }) {
   // posts.push({ id: Date.now(), title, text });

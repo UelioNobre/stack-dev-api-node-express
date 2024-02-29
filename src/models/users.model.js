@@ -1,4 +1,4 @@
-const { users } = require('../database/models')
+const { users } = require('../database/schemas')
 
 async function create({ name, email, password }) {
   try {

@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http')
 const { expect } = chai;
 chai.use(chaiHttp)
 
-const { users } = require('../../src/database/models')
+const { users } = require('../../src/database/schemas')
 const mock = require('../mocks');
 
 beforeAll(async () => {
