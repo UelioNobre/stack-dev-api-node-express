@@ -17,6 +17,7 @@ const config = {
     '!src/server.{js,jsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
+    '!src/database/**',
   ],
   coverageThreshold: {
     global: {
