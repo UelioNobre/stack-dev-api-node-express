@@ -1,7 +1,15 @@
 const { expect } = require('chai');
 
+const { posts } = require('../../../src/database/models')
 const postsModel = require('../../../src/models/posts.model')
 const mock = require('../../mocks');
+
+beforeAll(async () => {
+  await posts.destroy({
+    truncate: true
+  });
+})
+
 
 describe('Model Posts', () => {
   describe('Create', () => {
@@ -13,10 +21,9 @@ describe('Model Posts', () => {
       const postSaved = await postsModel.create(post);
 
       // Assert
-      expect(postSaved).to.have.property('id');
-      expect(postSaved).to.have.property('id').to.not.null;
-      expect(postSaved).to.be.haveOwnProperty('title', postSaved.title);
-      expect(postSaved).to.be.haveOwnProperty('text', postSaved.text);
+      expect(postSaved.id).to.be.equal(1)
+      expect(postSaved.title).to.be.equal(post.title);
+      expect(postSaved).to.be.haveOwnProperty('text', post.text);
     });
   });
 });
