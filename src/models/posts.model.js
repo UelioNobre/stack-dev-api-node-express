@@ -27,7 +27,6 @@ async function list() {
   return await posts.findAll();
 }
 
-
 module.exports = {
   create,
   read,
