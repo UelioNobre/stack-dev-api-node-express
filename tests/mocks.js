@@ -9,10 +9,32 @@ const userMock = {
   password: 'password'
 }
 
+const userMockWrongEmail = {
+  email: 'uelio@nobres.com',
+  password: 'password'
+}
+
+const userMockWrongPassword = {
+  email: 'uelio@nobre.com',
+  password: 'passwords'
+}
+
+const userMockWithoutEmail = {
+  password: 'password'
+}
+
+const userMockWithoutPassword = {
+  email: 'uelio@nobre.com',
+}
+
 module.exports = {
   postMock,
   postMockWithId,
   postCreatedMockExpected,
   postCreatedJSONMockExpected,
-  userMock
+  userMock,
+  userMockWrongEmail,
+  userMockWrongPassword,
+  userMockWithoutEmail,
+  userMockWithoutPassword
 }
