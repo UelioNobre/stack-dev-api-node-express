@@ -27,6 +27,10 @@ $ npx sequelize-cli db:migrate:undo
 $ npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js
 ```
 
+```bash
+npx sequelize-cli migration:create --name addFieldToPosts
+```
+
 #### Seeders
 ```bash
 npx sequelize-cli seed:generate --name posts
