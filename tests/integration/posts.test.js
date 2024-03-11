@@ -17,8 +17,12 @@ beforeAll(async () => {
 
 describe('Posts', () => {
   describe('Endpoint: "/posts"', () => {
-    it('Deve criar um post com sucesso', async () => {
-      const request = await chai.request(app).post('/posts').send(mock.postMock)
+    it.only('Deve criar um post com sucesso', async () => {
+      const request = await chai
+        .request(app)
+        // .set('authorization', 'Bearer 123abc')
+        .post('/posts')
+        .send(mock.postMock)
       const { statusCode, body } = request
 
       expect(statusCode).to.be.equal(201)
