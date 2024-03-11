@@ -27,6 +27,10 @@ $ npx sequelize-cli db:migrate:undo
 $ npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js
 ```
 
+```bash
+npx sequelize-cli migration:create --name addFieldToPosts
+```
+
 #### Seeders
 ```bash
 npx sequelize-cli seed:generate --name posts
@@ -35,3 +39,18 @@ npx sequelize-cli db:seed:undo
 npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
 npx sequelize-cli db:seed:undo:all
 ```
+
+## Atualizações
+### Posts
+
+- Para adicionar um post, deve haver um usuário autenticado.
+- Criar token com expiração de 15 dias
+- Verificar token
+- - Criação do token
+- - Tempo de expiração
+
+- Validação
+- - Está vencido?
+- - - Fazer login novamente
+- - Caso contrário
+- - - Continua
