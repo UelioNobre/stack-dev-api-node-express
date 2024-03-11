@@ -1,6 +1,6 @@
 function handler(err, _req, res, _next) {
 
-  // console.log({ err })
+  console.log({ err })
 
   if (err.cause) {
     return res
